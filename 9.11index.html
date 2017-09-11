@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>9.11</title>
+	<script src="index.js"></script>
+</head>
+<body>
+
+<script>
+// 闭包函数
+function fn(){
+	var num=10
+	return fn1
+	function fn1(){
+		num++;
+		return num
+	}
+}
+var result=fn()
+alert(result())
+// alert(result)
+
+// 映射转换成箭头函数  数组元素放大2倍
+ var arr=[1,2,3,4]
+ var result=map(arr,(value)=>value*2)
+  console.log(result)
+     function map(arr,fn){
+      var newarr=[]
+      for(var i=0;i<arr.length;i++){
+        newarr[newarr.length]=fn(arr[i])
+      }
+      return newarr
+     }
+// 数组元素大于2的输出
+ var arr=[1,2,3,4]
+ var result=filter(arr,(value)=>value>2)
+ console.log(result)
+function filter(arr,fn){
+	var newarr=[]
+	for (var i = 0; i < arr.length; i++) {
+		if(fn(arr[i])){
+			newarr[newarr.length]=arr[i]
+		}
+	}
+	return newarr
+}
+
+// 箭头函数多个运算
+  var fn2=(a,b)=>{
+  	  console.log(a+b)
+  	  console.log(a*b)
+  	  return [a,b]  //f返回结果
+  }
+  console.log(fn2(1,2))
+
+
+// 函数多个运算
+function fn3(a,b){
+	var sum
+	console.log(sum=a+b)
+	console.log(sum=a*b)
+	return sum
+}
+fn3(1,2)
+
+// var变量
+ // for (var i = 0; i < 10; i++) {
+ // 	console.log(i)}
+ // 	console.log(i)
+ // let 变量
+ for (let i = 0; i < 10; i++) {
+     	console.log(i)
+     }
+// let 变量
+var i=1
+ for (let i = 0; i < 3; i++) {
+ 	console.log(i)
+ }
+	console.log(i)
+// 局部变量覆盖全局变量
+
+
+
+
+// 内置顶层函数
+ console.log(escape('张三'))  //转换成编码
+
+ console.log(unescape('%u5F20%u4E09'))     //编码转换成汉字
+
+ console.log(Number(true))   //将其他类型转换为数字
+
+
+ console.log(String(1))   //将其他转换为字符串
+
+
+ console.log(Boolean(''))   //将其他转换为布尔值
+ console.log(Boolean(0))
+ console.log(Boolean(undefined))
+ console.log(Boolean(false))
+ console.log(Boolean(null))
+ console.log(Boolean(NaN))
+ console.log(Boolean('1'))
+
+ console.log(parseInt('100px')) //将字符串转换为整数
+
+ console.log(parseFloat('100.5px'))//字符串转换为小数
+
+ console.log(isNaN('1'))
+
+
+ // 创建对象
+ // json
+ // let zhangsan={}
+ // zhangsan.name='zhangsan'
+ // zhangsan.sex='man'
+ // console.log(zhangsan)
+
+  // let zhangsan={name:'zhangsan',age:18}
+  // console.log(zhangsan)
+ // 构造函数
+  function person(){
+  }
+  let zhangsan=new person();
+  let lisi=new person();
+  zhangsan.sex='man'
+  zhangsan.age=24
+  lisi.sex='woman'
+  lisi.age=18
+  console.log(zhangsan)
+  console.log(lisi)
+
+ var person1 = {
+  name: '张三',
+  age: 38,
+  ask: function() {
+    console.log('Hi! I\'m ' + this.name + '.今年'+this.age);
+  }
+};
+var person2 = Object.create(person1);
+person2.name 
+person2.age
+person2.ask()
+ </script>
+	
+</body>
+</html>
