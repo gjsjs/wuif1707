@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>9.15</title>
+</head>
+<body>
+	<script>
+		//Array数组
+		// function person() {
+		// 	this.name='zhangsan'
+		// 	this.age=18
+		// }
+		// person.prototype={
+		// 	study:function(){
+		// 		alert('学习')
+		// 	}
+		// }
+		// person.prototype.say=function(){
+		// 	alert('加油')
+		// }
+		// let zhangsan=new person
+		// console.dir(zhangsan)
+
+
+
+		//Array数组
+		// let arr=['a','b','c']
+		// arr.length=0  //清空数组
+		// console.log(arr.length)  //数组长度
+		// console.log(arr)
+
+	    // arr.push(1,2,3)  //从数组后面添加
+        //  console.log(arr)
+
+        // arr.unshift(1,2,3)  //从数组前面添加
+        // console.log(arr)
+
+        // console.log(arr.pop())  //删除数组最后一个元素
+        // console.log(arr)
+
+         // console.log(arr.shift())  //删除数组第一个元素
+         // console.log(arr)
+          
+
+          // arr.splice(1,2)//删除元素
+          // console.log(arr)
+          // arr.splice(3,0,'x','y')//添加元素
+          // console.log(arr)
+          //  arr.splice(2,1,'x','y')//删除添加元素
+          // console.log(arr)
+           
+          // arr.pop() //删除数组最后一个元素
+          // console.log(arr)
+          
+
+          // let arr=[1,2,3,4,5,6] // 数组合并把arr1放到arr中
+          // let arr1=['a','b','c']
+          // console.log(arr.concat(arr1))
+          
+         // let arr=[1,2,3,4,5,6]   //数组合并
+         // let arr1=['a','b','c']
+         // for (let i = 0; i < arr1.length; i++) {
+         // 	arr.push(arr1[i])
+         // }
+         // console.log(arr)
+
+         //  let arr=[1,2,3,4,5,6]  //数组合并
+         //  let arr1=['a','b','c']
+         // arr.push(...arr1)
+         // console.log(arr)
+
+          // let arr=[1,2,3,4,5,6] // 数组合并把arr放到arr1中新数组
+          // let arr1=['a','b','c']
+          // console.log(arr1.concat(arr))
+
+          // let arr=[1,2,3,4,5,6] //数组倒置
+          //console.log(arr.reverse())
+
+        
+          // console.log(arr.join('+'))//数组内元素弄成字符串插入页面
+          
+
+          // console.log(arr.includes(2))//数组元素是否存在
+          
+
+          // let arr=[1,23,41,56,7,8]  //升序
+          //  arr.sort(function(a,b){
+          //      return a-b>0
+          //  })
+          //  console.log(arr)
+           
+     //数组去重
+     //不重复的放新数组
+     //判断新数组是否存在当前元素
+     //放
+     //arr1
+        // let arr=[1,2,3,4,5,1,2,3]
+        // let arr1=[]
+        // for (var i = 0; i < arr.length; i++) {
+        // 	if (!arr1.includes(arr[i])) {
+        // 		  arr1.push(arr[i])
+        		 
+        // 	}
+        // }
+        // console.log(arr1)
+
+
+
+   //   let arr=[1,2,3,4,5,1,2,3]
+   //   function delRepeat(arr){
+   //      let arr1=[]
+   //      for (let i = 0; i < arr.length; i++) {
+   //       let flag=true
+   //        for (let j = i+1; j < arr.length; j++) {
+   //          	if (arr[i]==arr[j]) {
+   //          	flag=false
+   //          	break
+   //        }
+   //      }
+   //     if(flag){
+   //      arr1.push(arr[i])
+   //     }
+   //     }
+   //     return arr1
+   // }
+   //    let arr1=delRepeat(arr)
+   //    console.log(arr1)
+   
+    // let arr=[1,2,3,4,5,1,2,3]
+    //    Array.prototype.delRepeat=function(){
+    //    	  let arr1=[]
+    //     for (let i = 0; i < this.length; i++) {
+    //      let flag=true
+    //       for (let j = i+1; j < this.length; j++) {
+    //         	if (this[i]==this[j]) {
+    //         	flag=false
+    //         	break
+    //       }
+    //     }
+    //    if(flag){
+    //     arr1.push(this[i])
+    //    }
+    //    }
+    //    return arr1
+    //    }
+    //   let result=arr.delRepeat()
+    //   console.log(result)
+ 
+
+
+
+    // Math
+     // console.log(Math.abs(-10))  //绝对值
+     //  console.log(Math.ceil(-10.1))// 向上取整
+     //  console.log(Math.floor(0.2))//向下取整
+     //  console.log(Math.max(1,2,3,5))：最大值
+     //  console.log (Math.min(1,2,3,5))//最小值
+     //  console.log(Math.pow(2,3))//指数运算
+     //  console.log(Math.sqrt(4))//平方根
+     //  console.log(Math.log())//自然对数
+     //     console.log(Math.exp())//e的指数
+     //     console.log(Math.round())四舍五入
+           //for (var i = 0; i <10; i++) {
+          // console.log(Math.random()*10+10)//随机数
+            //console.log(Math.random()*15+5)
+             //console.log(Math.random()*10-5)
+      // }
+    
+
+
+      // function color(){
+      // 	let str ='reb('
+      // 	for (var i = 0; i < 3 i++) {
+      // 	let num=Math.round(Math.random()*255)
+      // 		 	str+=num+','
+      //  }
+      //     str+=str.slice(0,-1)
+      //     str+=')'
+      //     return str
+      // }
+    
+      //  let.box=document.getElementById('box')
+      //  box.onmouseover=function(){
+      //  	 box.style.background=color()
+      //  }
+
+
+       // let arr=['a','b','c','d','e','f']
+       // //Math.floor(Math.random()*arr.length)
+       // console.log(fn(arr,3))
+       //  function fn(arr,num){
+       //  	let arr1=[]
+       //  	for (var i = 0; i < num; i++) {
+       //  	let index=Math.floor(Math.random()*arr.length);
+        	
+       //  	while (arr1.includes(arr[index])){
+       //  		index=Math.floor(Math.random()*arr.length)
+       //  	}
+
+       //  	arr1.push(arr[index])
+       //  	}
+
+       //  	return arr1
+       //  }
+        
+
+
+       //   let arr=['a','b','c','d','e','f']
+       // console.log(fn(arr,3))
+       //  function fn(arr,num){
+       //  	let arr1=[]
+       //  	for (var i = 0; i < num; i++) {
+       //  	let index=Math.floor(Math.random()*arr.length);
+        	
+       //      if(!arr1.includes(arr[index])){
+       //  	arr1.push(arr[index])
+       //        }
+       //  	}
+
+       //  	return arr1
+       //  }
+        
+	</script>
+</body>
+</html>
