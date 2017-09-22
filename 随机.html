@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>dom节点</title>
+</head>
+<style>
+	.box{
+		width: 50px;
+		height: 50px;
+		background:red;
+		border-radius: 50%;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transition:all 500ms; 
+	}
+</style>
+<body>
+ <!--  <div class="box">
+  	<div>你好</div>
+  	<p>我好</p>
+  	 <em>大家好</em> 
+  </div> -->
+	<script>
+		window.onload=function(){
+           //let box=document.getElementsByClassName('box')[0]
+           // let div=document.getElementsByTagName('div')
+           // let p=document.getElementsByTagName('p')
+		     //console.log(box.childNodes.length)
+
+
+       
+        // getNodes(box.childNodes)
+        //  console.log(box.childNodes.length)
+        //    function getNodes(nodes){
+        //    	for (let i = 0; i < nodes.length; i++) {
+        //    		if (nodes[i].nodeType==1&&/\s+&/.test(nodes[i].nodeValue)) {
+        //    			nodes[i].parentNode.removeChild(node[i]);
+        //    		}
+        //    	}
+        //    }
+      
+    
+
+
+     // let box=document.querySelector('div.box')
+     // let div=document.createElement('div')
+     // div.style.width='100px'
+     // div.style.height='100px'
+     // div.style.background='red'
+     // box.parentNode.appendChild(div)
+
+
+/*
+在页面随机（大小，颜色，位置）的插入20个元素
+ */
+   function  Element(num){
+   	for(let i=0;i<num;i++){
+   		 let div=document.createElement('div');
+   		 div.className='box';
+   		 let lefts=Math.floor((window.innerWidth-150)*Math.random())
+   		 let tops=Math.floor((window.innerHeight-150)*Math.random())
+   		 // div.style.left=`${lefts}px`
+   		 // div.style.top=`${tops}px`
+   		let widths=Math.floor(Math.random()*70+30)
+   		div.style.width=`${widths}px`
+        div.style.height=`${widths}px`
+        div.style.background=color()
+   		 document.body.appendChild(div)
+     setTimeout(function(){
+      	 div.style.left=`${lefts}px`
+   		 div.style.top=`${tops}px`
+   		div.style.transitionDelay=`${i*100}ms`
+   		 
+      },1000)
+      function color(){
+
+	    let str='rgb('
+         for (let j = 0; j < 3; j++) {
+   		    let rgb=Math.round(Math.random()*255)
+   		    str+=rgb+','
+   		 }
+   		 str=str.slice(0,-1)
+          str+=')'
+         return str
+       }
+
+	 }
+    }
+
+Element(20)
+
+
+
+
+
+
+
+
+		}
+
+	</script>
+</body>
+</html>

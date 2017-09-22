@@ -1,0 +1,106 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+ 	<meta charset="UTF-8">
+ 	<title>圆</title>
+ </head>
+ <style>
+   .center{
+   	width: 1px;
+   	height: 1px;
+   	position:absolute;
+   	top: 50%;
+   	left: 50%;
+   }
+   .box{
+		width: 50px;
+		height: 50px;
+		background:red;
+		border-radius: 50%;
+		position: absolute;
+		left:0;
+		top: 0;
+		/* margin-left: 50px; */
+		transition: all 0.5s
+	}
+ </style>
+ <body>
+ 	<div class="center"></div>
+ 	<script>
+ 		window.onload=function(){
+ 			function lala(r,num){
+ 			let div1=document.querySelector('div.center')
+ 			for (let i = 0; i < num; i++) {
+ 			// let r=300;     //半径
+ 			// let num=12;     //圆的个数
+ 			 
+ 			 if (i%20==0) {r+=100}
+ 			let deg=360/20;//角度
+ 			let rad=deg*i*Math.PI/180;//弧度
+ 			let divs=document.createElement('div')   //创建一个节点
+ 			divs.className='box'     //给添加节点赋css样式
+ 		    div1.appendChild(divs)	
+ 		    let lefts=r*Math.cos(rad)    //求得横坐标
+   		    let tops=r*Math.sin(rad)     //纵坐标
+   		    setTimeout(function(){         //时间函数/*动画效果*/
+   		       divs.style.left=`${lefts}px`
+   		       divs.style.top=`${tops}px`
+   		       divs.style.transitionDelay=`${i*100}ms`
+   		    },1000)
+   		       divs.style.background=color()
+   	    function color(){                  /*随机颜色函数*/
+	    let str='rgb('              
+	         for (let j = 0; j < 3; j++) {
+	   		    let rgb=Math.round(Math.random()*255)
+	   		    str+=rgb+','
+	   		 }
+	   		 str=str.slice(0,-1)
+	          str+=')'
+	         return str
+	       }
+	       setInterval(function(){
+	       },1000)
+	 	}
+	}
+	 	lala(500,500)
+}
+
+
+/*将element插入到posittion后面
+   element插入元素  position插入的元素位置元素
+*/
+function insertAfter(element,position){
+   let next=position.nextElementSibling
+   let parent= position.parentNode
+   if (next) {
+   	parent.inserBefore(element,next)
+   }else{
+    parent.appendChild(element)
+   }
+}
+
+//在某个元素后插入一个元素
+HTMLElement.prototype.insertAfter=function(element){
+	let next=this.nextElementSibling
+   let parent= this.parentNode
+   if (next) {
+   	parent.inserBefore(element,next)
+   }else{
+    parent.appendChild(element)
+   }
+}
+
+
+HTMLElement.prototype.perpendchild=function(element){
+	let first=this.firstElementchild
+   let parent= this.parentNode
+   if (next) {
+   	parent.inserBefore(element,first)
+   }else{
+    parent.appendChild(element)
+   }
+}
+
+ 	</script>
+ </body>
+ </html>

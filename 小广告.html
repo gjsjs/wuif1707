@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>移动</title>
+</head>
+<style>
+   *{
+   	margin: 0;
+   	padding: 0;
+   }
+	.box{
+		width: 200px;
+		height: 200px;
+		position:relative;
+		top: 0;
+		left: 0;
+		background: red;
+	}
+</style>
+<body>
+	<div class="box"></div>
+	<script>
+		window.onload=function(){
+			//上下
+			let box=document.getElementsByClassName('box')[0]
+			let maxY=window.innerHeight-box.offsetHeight;
+			 let t=setInterval(move,100)
+			 let speed=10;
+			function move(){
+				box.style.top=box.offsetTop+speed+'px';
+				let top=box.offsetTop
+			   if (top>=maxY) {
+                   top=maxY
+                   speed*=-1
+			 }
+			   if (top<=0) {
+                   top=0
+                   speed*=-1
+			 }
+			}
+			
+           // 左右
+    //        let box=document.getElementsByClassName('box')[0]
+            let maxX=window.innerWidth-box.offsetWidth;
+            let t1=setInterval(move1,100)
+			let speed1=10;
+             function move1(){
+             box.style.left=box.offsetLeft+speed1+'px';
+             let left=box.offsetLeft;
+               	   if (left>=maxX) {
+                   left=maxX
+                   speed1*=-1
+			 }
+			   if (left<=0) {
+                   left=0
+                   speed1*=-1
+			 }
+
+			}
+      
+
+
+      // 上左一起动
+     //    let box=document.getElementsByClassName('box')[0]
+     //    let maxY=window.innerHeight-box.offsetHeight;
+     //    let maxX=window.innerWidth-box.offsetWidth;
+     //    let t=setInterval(move,100)
+	    // let speed=10;
+	    // function move(){
+	    // 		box.style.top=box.offsetTop+speed+'px';
+	    // 		let top=box.offsetTop
+	    // 		box.style.left=box.offsetLeft+speed+'px';
+	    // 		 let left=box.offsetLeft;
+	    // 		 if (top>maxY||left>maxX) {
+	    // 		 	left=maxX
+	    // 		 	top=maxY
+	    // 		 	speed*=-1
+	    // 		 }
+	    // 		  if (top<0||left<0) {
+	    // 		    left=0
+	    // 		 	top=0
+	    // 		 	speed*=-1
+	    // 		 }
+	    		 
+	    // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+		}
+
+	</script>
+</body>
+</html>
