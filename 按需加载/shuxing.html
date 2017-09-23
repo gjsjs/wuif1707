@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	
+</head>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+	header{
+		width:100%;
+		height: 200px;
+		background: red;
+		text-align: center;
+		line-height: 200px;
+	}
+   .box{
+   	    width:100%;
+   	    height:300px; 
+       /* margin-top: 100px; */
+   }
+   .dahua{
+   	width: 1250px;
+   	height: 300px;
+   	border: 1px solid #ccc;
+   	margin:0 auto;
+   }
+
+   .dahua li{
+   	width: 234px;
+   	height: 200px;
+   	float: left;
+   	background: #ccc;
+   	margin-right: 14px;
+   }
+    .dahua li img{
+    		width: 234px;
+   	height: 200px;
+    }
+   footer{
+   	width: 100%;
+   	height:200px;
+   	background: red;
+   	text-align: center;
+	line-height: 200px;
+   }
+   .aside{
+   	width: 30px;
+ 
+  /*  	z-index: 99; */
+    position: fixed;
+    top:50%;
+    left:0;
+   }
+    .aside li{
+      width: 30px;
+      height: 30px;
+       text-align:center;
+       line-height: 30px;
+       /* background:#000; */
+       color:#ccc;
+   	border:1px solid #ccc;
+
+    }
+ .aside li:first-child{
+ 	background: #000
+ }   
+</style>
+<body>
+	 <header>这是头部</header>
+	 <div class="box">
+			<ul class="dahua">
+				<li>
+						<img imgPath="img/7.jpg" alt="">
+						</li>
+				<li>
+						<img imgPath="img/6.png" alt="">
+						</li>
+				<li>
+						<img imgPath="img/6.png" alt="">
+						
+					</li>
+				<li>
+						<img imgPath="img/6.png" alt="">
+					
+					</li>
+				<li>
+						<img imgPath="img/6.png" alt="">
+					</li>
+					
+			</ul>
+			
+		</div>
+		 <div class="box">
+			<ul class="dahua">
+				<li>
+						<img imgPath="img/6.png" alt="">
+						</li>
+				<li>
+						<img imgPath="img/6.png" alt="">
+						</li>
+				<li>
+						<img imgPath="img/6.png" alt="">
+						
+					</li>
+				<li>
+						<img imgPath="img/6.png" alt="">
+					
+					</li>
+				<li>
+						<img imgPath="img/6.png" alt="">
+					</li>
+					
+			</ul>
+			
+		</div>
+		 <div class="box">
+			<ul class="dahua">
+				<li>
+						<img imgPath="img/6.png" alt="">
+						</li>
+				<li>
+						<img imgPath="img/6.png" alt="">
+						</li>
+				<li>
+						<img imgPath="img/6.png" alt="">
+						
+					</li>
+				<li>
+						<img imgPath="img/6.png" alt="">
+					
+					</li>
+				<li>
+						<img imgPath="img/6.png" alt="">
+					</li>
+					
+			</ul>
+			
+		</div>
+		 <div class="box">
+			<ul class="dahua">
+				<li>
+						<img imgPath="img/6.png" alt="">
+						</li>
+				<li>
+						<img imgPath="img/6.png" alt="">
+						</li>
+				<li>
+						<img imgPath="img/6.png" alt="">
+						
+					</li>
+				<li>
+						<img imgPath="img/6.png" alt="">
+					
+					</li>
+				<li>
+						<img imgPath="img/6.png" alt="">
+					</li>
+					
+			</ul>
+			
+		</div>
+		 <div class="box">
+			<ul class="dahua">
+				<li>
+						<img imgPath="img/6.png" alt="">
+						</li>
+				<li>
+						<img imgPath="img/6.png" alt="">
+						</li>
+				<li>
+						<img imgPath="img/6.png" alt="">
+						
+					</li>
+				<li>
+						<img imgPath="img/6.png" alt="">
+					
+					</li>
+				<li>
+						<img imgPath="img/6.png" alt="">
+					</li>
+					
+			</ul>
+		</div>
+		<ul class="aside">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+<!-- 	 <footer>这是底部</footer> -->
+   
+	<script>
+		window.onload=function(){
+			let ch=innerHeight;
+			let floor=document.querySelectorAll('.box')
+			let floorArr=[]
+			floor.forEach(element=>{         //给每个添加一个事件
+				floorArr.push(element.offsetTop)
+			}) 
+			 let aside=document.querySelector('.aside')
+			 let li1=document.querySelectorAll('.aside li')
+			 console.log(li1)
+			 let flag=true;
+			 let color=['red','blue','pink','yellow','green']
+			 //1.按需加载
+			 //2.点击效果
+			 //3.颜色
+	      	 for (let i = 0; i <li1.length; i++) {
+	      	 		li1[i].onclick=function(){
+	      	 			animate(document.body,{scrollTop:floorArr[i]},function(){flag=true})
+	      	 			
+	      	 		for(let j=0;j<li1.length;j++){
+	      	 			li1[j].style.background='none';
+	      	 		}   
+	      	 			li1[i].style.background=color[i];
+	      	 			flag=false
+                  }
+	      	 	 }
+
+	      
+
+			window.onscroll=function(){
+				if(!flag){
+					return
+				}
+				let scrolltop=document.body.scrollTop
+				floorArr.forEach((value,index)=>{
+                      if(scrolltop+ch>=value+300){
+                      	for(let j=0;j<li1.length;j++){
+	      	 			li1[j].style.background='none';
+	      	 		}   
+	      	 			li1[index].style.background=color[index];
+                  
+                         let imgs= floor[index].getElementsByTagName('img')
+                         for (let i =0 ;i<imgs.length; i++) {
+                            imgs[i].src=imgs[i].getAttribute('imgPath')
+                         }
+                      }
+				})
+	      		}
+
+		}
+	</script>
+  <script src="animate.js"></script>
+</body>
+</html>
