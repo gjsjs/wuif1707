@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="window.onload.js"></script>
+	<title>留言</title>
+</head>
+<style>
+   
+	.textarea {
+		display: block;
+		width: 600px;
+		height: 250px;
+        padding-left:5px;
+        margin-top:10px;
+        font-size: 20px; 
+        margin:0 auto;
+	} 
+	.box{
+   	width: 600px;
+   	height:50px;
+   	display: flex;
+   	margin: 0 auto;
+   /* 	border:2px solid #000; */
+   	margin-top:5px;
+    margin-bottom: 5px; 
+    justify-content: space-between;
+    align-items:center;
+   }
+	button{
+        display: block;
+		width: 80px;
+		height: 40px;
+		margin-right: 10px;
+	}
+   .liuyan{
+   	width: 600px;
+   	height: 200px;
+   	border:2px solid #000;
+     margin:0 auto;
+   }
+   .wenzi{
+   	font-size:20px;
+   	color: #000;
+   }
+
+</style>
+<body>
+   	<textarea name="name"  cols="30" rows="10"  placeholder="请留言" maxlength="100" class="textarea"  value=""></textarea>
+   	<div class="box">
+   	 <p class="wenzi"></p>
+   	<button>提交</button>
+     </div>
+   	<div class="liuyan"></div> 
+
+ 
+
+
+	<script>
+		window.addEventListener('load',function(){
+			let text=document.querySelector('.textarea');
+			let button=document.querySelector('button');
+			let liuyan=document.querySelector('.liuyan')
+			let wenzi=document.querySelector('.wenzi')
+			// let box =document.querySelector('.box')
+			// let text=`${'.textarea'}`
+			// let button=`${'button'}`
+			// let liuyan=`${'.liuyan'}`
+			// let wenzi=`${'wenzi'}`
+			// console.log(text)
+			// console.log(button)
+			// console.log(liuyan)
+			// console.log(wenzi)
+        
+			// text.onkeyup=function(){
+			// 	wenzi.innerHTML= Number(text.maxlength-text.value.length)+'字'
+			// }
+			button.onclick=function(){
+                liuyan.innerHTML=text.value;
+                text.value=null
+			
+			}	
+		})
+	</script>
+</body>
+</html>
