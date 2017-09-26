@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>留言板</title>
+</head>
+<style>
+*{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+	main{
+		width: 600px;
+		height: auto;
+		margin: 0 auto;
+		border: 1px solid #ccc;
+		margin-top:20px;
+	}
+	.box{
+		width: 500px;
+		height: auto;
+		margin: 0 auto;
+	}
+	.box>input{
+    
+     display: block;
+     width: 500px;
+	 height: auto;
+	 margin:10px auto;
+	 box-sizing: border-box;
+	 outline: none;
+
+	}
+	.box>textarea{
+		width: 500px;
+		height: 150px;
+		padding:5px 10px;
+		resize: none;
+		box-sizing: border-box;
+		font-size: 16px;
+	}
+	.box>div{
+		font-size:12px;
+		color: #dfdfdf;
+	}
+	.box>div>span{
+		font-size:15px;
+		color: red;
+	}
+	.box>button{
+		width: 500px;
+		height:auto;
+		text-align: center;
+		background: #dfdfdf;
+		border: none;
+		margin-bottom: 10px;
+	}
+	.big{
+		width: 600px;
+		height: auto;
+		margin: 0 auto;
+		border: 1px solid #ccc;
+		margin-top:20px;
+	}
+    .big li{
+    	width: 500px;
+    	
+    	display: flex;
+    	align-items: center;
+    	margin:10px auto;
+    	border-bottom:1px solid #000;
+    	box-sizing: border-box;
+
+    }
+    .big li img{
+    	width: 80px;
+    	height: 80px;
+    }
+    .big li .big1{
+     margin-left:10px; 
+    }
+     .big li .big1 span{
+     	display: block;
+     	margin-top: -42px;
+     }
+ /*  .div1{
+    	width: 400px;
+    	height: auto;
+    	border:1px solid #dfdfdd;
+    	margin-bottom:5px;
+    }
+  .div2{
+  	width: 400px;
+  	height: 53px;
+  	border:1px solid #dfdfdd;
+  } */
+</style>
+<body>
+	<main>
+		<div class="box">
+			<input type="text"  placeholder="用户名">
+		</div>
+		<div class="box">
+			<textarea placeholder="请留言" maxlength="200"></textarea>
+			<div>已输入<span class="num">0</span>个字，还可以输入<span class="num1">200</span>个字，最多输入200字</div>
+		</div>
+		<div class="box">
+			<button>提交</button>
+		</div>
+	</main>
+	<ul class="big">
+		<li>
+			<img src="3.webp" alt="">
+			<div class="big1">
+			   <span class="name">zhangsan</span>
+			    <p  class="name1">内容</p>
+			</div>
+		</li>
+	</ul>
+
+
+
+
+	<script>
+		window.addEventListener('load',function(){
+             let input=document.querySelector('input');
+             let text=document.querySelector('textarea');
+             let butn=document.querySelector('button');
+             let big=document.querySelector('.big');
+             let num=document.querySelector('.num');
+             let num1=document.querySelector('.num1');
+             // let lis=document.querySelector('.big li')
+             text.onkeyup=function(){
+             let str=text.value;
+             num.innerText=str.length;
+             num1.innerText=text.maxLength-str.length;
+		    }
+
+
+
+       //       text.onkeydown=function(e){
+       //       	if(e.shiftkey&&e.keyCode==13){
+       //       	big.innerHTML+=`<li>
+			    // <img src="3.webp" alt="">
+			    // <div class="big1">
+			    // <span class="name">${input.value}</span>
+			    //     <p class="name1">${text.value}</p>
+		     //     </li>`
+       //       	}
+       //       }
+         
+
+         //后        
+       //      butn.onclick=function(){
+       //      	 big.innerHTML+=`<li>
+			    // <img src="3.webp" alt="">
+			    // <div class="big1">
+			    // <span class="name">${input.value}</span>
+			    //     <p class="name1">${text.value}</p>
+		     //     </li>`
+       //         text.value=''
+       //         input.value=''
+       //      	num.innerText=0
+       //      	num1.innerText=200
+       //      }
+          
+
+
+
+
+          //前    
+            butn.onclick=function(){
+            	let first=big.firstElementChild;
+            	let li=document.createElement('li');
+            	li.innerHTML=`<img src="3.webp" alt="">
+			        <div class="big1">
+			         <span class="name">${input.value}</span>
+			         <p class="name1">${text.value}</p>`
+			     big.insertBefore(li,first)
+               text.value=''
+               input.value=''
+            	num.innerText=0
+            	num1.innerText=200
+            }
+           big.onmouseover=function(e){
+           	if (e.target.nodeName=='LI') {
+           		e.target.style.background='red'
+           	}
+           }
+             big.onmouseout=function(e){
+           	if (e.target.nodeName=='LI') {
+           		e.target.style.background='#fff'
+           	}
+           }
+
+
+
+
+
+		})
+	</script>
+</body>
+</html>
