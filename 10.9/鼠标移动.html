@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>鼠标移动</title>
+</head>
+<style>
+	canvas{
+		border: 1px solid #f70;
+	}
+</style>
+<body>
+	<canvas width="600" height="600"></canvas>
+	<script>
+		window.onload=function(){
+			let canvas=document.querySelector('canvas')
+			let ctx=canvas.getContext("2d");
+			//直线
+			// canvas.onmousedown=function(e){
+			// 	let cx=e.offsetX,cy=e.offsetY;
+			// 	canvas.onmousemove=function(e){
+   //                 let ox=e.offsetX,oy=e.offsetY;
+   //                 ctx.clearRect(0,0,canvas.width,canvas.height)
+   //                 ctx.beginPath();
+   //                 ctx.moveTo(cx,cy);
+   //                 ctx.lineTo(ox,oy);
+   //                 ctx.closePath();
+   //                 ctx.stroke();
+			// 	}
+			// }
+   //          canvas.onmouseup=function(){
+   //          	canvas.onmousemove=null;
+   //          }
+
+           //圆
+   //         canvas.onmousedown=function(e){
+			// 	let cx=e.offsetX,cy=e.offsetY;
+			// 	canvas.onmousemove=function(e){
+   //                 let ox=e.offsetX,oy=e.offsetY;
+   //                 ctx.clearRect(0,0,canvas.width,canvas.height)
+   //                 ctx.beginPath();
+   //                 let r=Math.abs(ox-cx)+Math.abs(oy-cy);
+   //                ctx.arc(cx,cy,r,0,Math.PI*2)
+   //                 ctx.closePath();
+   //                 ctx.stroke();
+			// 	}
+			// }
+   //          canvas.onmouseup=function(){
+   //          	// canvas.onmousedown=null;
+   //          	canvas.onmousemove=null;
+   //          }
+          
+
+
+          // 多边形
+   //        canvas.onmousedown=function(e){
+			// 	let cx=e.offsetX,cy=e.offsetY;
+			// 	canvas.onmousemove=function(e){
+			// 		 let ox=e.offsetX,oy=e.offsetY;
+			// 		ctx.clearRect(0,0,canvas.width,canvas.height)
+			// 		let r=Math.abs(ox-cx)+Math.abs(oy-cy);
+			// 		poly(cx,cy,r,5)
+			// 	}
+			// }
+			// canvas.onmouseup=function(){
+			// 	 	canvas.onmousemove=null;
+			// 	 	}
+   //        function poly(x1,y1,r,n){
+			// 	let rad=Math.PI/n;
+			// 	ctx.beginPath();
+			// 	ctx.moveTo(x1+r,y1);
+			// 	for(let i=0;i<2*n;i++){
+			// 		let r1;
+			// 	    r1=i%2==0 ? r:r/3;
+			// 		let x=x1+r1*Math.cos(rad*i);
+			// 		let y=y1+r1*Math.sin(rad*i);
+			// 		ctx.lineTo(x, y);
+			// 	}
+			// 	ctx.closePath();
+			// 	ctx.stroke();
+			// }
+		
+
+          //铅笔
+          // canvas.onmousedown=function(e){
+          //    let cx=e.offsetX,cy=e.offsetY;
+          //    ctx.beginPath();
+          //    ctx.moveTo(cx,cy);
+          //    canvas.onmousemove=function(e){
+          //    	let ox=e.offsetX,oy=e.offsetY;
+          //       ctx.lineTo(ox,oy);
+          //       ctx.stroke();
+          //    }
+          // }
+          // canvas.onmouseup=function(){
+          // 	canvas.onmousemove=null;
+          // }
+  
+
+       
+
+
+
+
+
+
+
+
+
+
+		}
+	</script>
+</body>
+</html>

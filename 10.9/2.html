@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>圆</title>
+</head>
+<style>
+	canvas{
+		border:1px solid #f70;
+		position: absolute;
+		left: 20%;
+		top: 20%;
+	}
+</style>
+<body>
+	<canvas width="300" height="300"></canvas>
+	<script>
+		window.addEventListener('load',function(){
+			let canvas=document.querySelector('canvas');
+			let ctx=canvas.getContext("2d");
+			for(let i=0;i<4;i++){
+				for(let j=0;j<3;j++){
+					let x=(2*j+1)*30+j*20,
+					    y=(2*i+1)*30+i*20,
+					    endRad=Math.PI+Math.PI/2*j,
+					    // dir=i%2 ? true:false;
+					    dir=!!(i%2)
+					ctx.beginPath();
+					ctx.arc(x, y,30,0,endRad,dir)
+					if (i%2) {
+					ctx.fill();
+				}else{
+					ctx.stroke();
+				}
+				}
+			}
+		})
+	</script>
+</body>
+</html>

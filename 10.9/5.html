@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>橡皮擦</title>
+</head>
+<style>
+   *{
+   	margin:0;
+   	padding:0;
+   }
+	.box{
+		width:600px;
+		height:600px;
+		border:1px solid red;
+	}
+	.eraser{
+		width:20px;
+		height:20px;
+		position:absolute;
+		left:0;
+		top: 0;
+		background:red;
+		display: none;
+	}
+	.opacity{
+		width: 100%;
+		height: 100%;
+		position:absolute;
+		left: 0;
+		top: 0;
+		z-index: 99;
+	}
+</style>
+<body>
+	<div class="box">
+		<canvas width="600" height="600"></canvas>
+		<div class="eraser"></div>
+		<div class="opacity"></div>
+	</div>
+	<script>
+		window.onload=function(){
+			let eraser=document.querySelector('.eraser');
+			let opacity=document.querySelector('.opacity')
+			let canvas=document.querySelector('canvas');
+			let ctx=canvas.getContext("2d");
+			function poly(r,n){
+				let rad=Math.PI/n;
+				ctx.beginPath();
+				ctx.moveTo(150+r,150);
+				for(let i=0;i<2*n;i++){
+					let r1;
+				    r1=i%2==0 ? r:r/3;
+					let x=150+r1*Math.cos(rad*i);
+					let y=150+r1*Math.sin(rad*i);
+					ctx.lineTo(x, y);
+				}
+				ctx.closePath();
+				ctx.stroke();
+			}
+			poly(200,5)
+		
+		 opacity.onmousedown=function(){
+				eraser.style.display='block';
+				opacity.onmousemove=function(e){
+                   let ox=e.offsetX-10,oy=e.offsetY-10;
+                   eraser.style.left=`${ox}px`;
+                   eraser.style.top=`${oy}px`;
+                   ctx.clearRect(ox,oy,20,20);
+                 
+				}
+			}
+            opacity.onmouseup=function(){
+            	eraser.style.display='none';
+            	opacity.onmousemove=null;
+            }
+
+
+
+
+		}
+	</script>
+</body>
+</html>

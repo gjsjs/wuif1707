@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多边形,多角形</title>
+</head>
+<style>
+	canvas{
+		border:1px solid #f70;
+	}
+</style>
+<body>
+	<canvas width="300" height="300"></canvas>
+	<script>
+		window.onload=function(){
+			let canvas=document.querySelector('canvas');
+			let ctx=canvas.getContext("2d");
+			// function poly(n){
+			// 	let rad=Math.PI*2/n;
+			// 	ctx.beginPath();
+			// 	ctx.moveTo(250, 150);
+			// 	for(let i=0;i<n;i++){
+			// 		let x=150+100*Math.cos(rad*i),
+			// 		    y=150+100*Math.sin(rad*i);
+			// 		ctx.lineTo(x,y)
+			// 	}
+			// 	ctx.closePath();
+			// 	ctx.stroke();
+			// }
+			// poly(4)
+			
+			function poly(r,n){
+				let rad=Math.PI/n;
+				ctx.beginPath();
+				ctx.moveTo(150+r,150);
+				for(let i=0;i<2*n;i++){
+					let r1;
+				    r1=i%2==0 ? r:r/3;
+					let x=150+r1*Math.cos(rad*i);
+					let y=150+r1*Math.sin(rad*i);
+					ctx.lineTo(x, y);
+				}
+				ctx.closePath();
+				ctx.stroke();
+			}
+			poly(100,10)
+		}
+	</script>
+</body>
+</html>

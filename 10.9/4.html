@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<style>
+	canvas{
+		border: 1px solid #f70;
+	}
+</style>
+<body>
+	<canvas width="600" height="600"></canvas>
+	<button>撤销</button>
+	<button class="ca">橡皮擦</button>
+	<script>
+		window.onload=function(){
+			let canvas=document.querySelector('canvas')
+			let ctx=canvas.getContext("2d");
+			let butn=document.querySelector('button');
+			//撤销
+			// let arr=[];
+   //          canvas.onmousedown=function(e){
+			// 	let cx=e.offsetX,cy=e.offsetY;
+			// 	canvas.onmousemove=function(e){
+   //                 let ox=e.offsetX,oy=e.offsetY;
+   //                 ctx.clearRect(0,0,canvas.width,canvas.height);
+   //                 if(arr.length){
+   //                 ctx.putImageData(arr[arr.length-1],0,0)
+   //                 }
+   //                 ctx.beginPath();
+   //                 ctx.moveTo(cx,cy);
+   //                 ctx.lineTo(ox,oy);
+   //                 ctx.closePath();
+   //                 ctx.stroke();
+			// 	}
+			// }
+   //          canvas.onmouseup=function(){
+   //          	arr.push(ctx.getImageData(0,0,canvas.width,canvas.height))
+   //          	canvas.onmousemove=null;
+   //          }
+   //          butn.onclick=function(){
+   //          	if (!arr.length) {return}
+   //          	arr.pop();
+   //          	ctx.clearRect(0, 0,canvas.width, canvas.height);
+   //              ctx.putImageData(arr[arr.length-1],0,0)
+   //          }
+
+
+           //橡皮擦
+            let bnt=document.querySelector('.ca')
+            let arr=[];
+            canvas.onmousedown=function(e){
+				let cx=e.offsetX,cy=e.offsetY;
+				canvas.onmousemove=function(e){
+                   let ox=e.offsetX,oy=e.offsetY;
+                   ctx.clearRect(0,0,canvas.width,canvas.height);
+                   if (arr.length) {
+                   	ctx.putImageData(arr[arr.length-1],0,0)
+                   }
+                   ctx.beginPath();
+                   ctx.moveTo(cx,cy);
+                   ctx.lineTo(ox,oy);
+                   ctx.closePath();
+                   ctx.stroke();
+				}
+			}
+            canvas.onmouseup=function(){
+            	arr.push.(ctx.getImageData(0,0,canvas.width,canvas.height));
+            	canvas.onmousemove=null;
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		}
+		</script>
+</body>
+</html>
