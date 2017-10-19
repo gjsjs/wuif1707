@@ -1,0 +1,288 @@
+@import url('base.css');
+/* head */
+header{
+	width: 100%;
+	height: 650px;
+	position: relative;
+}
+.banner{
+	width: 100%;
+	height: 650px;
+	position: relative;
+	top: 0;
+	left: 0;
+}
+.banner li{
+	width: 100%;
+	height: 650px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	/* opacity:0; */
+}
+.banner li img:last-child{
+	opacity:1;
+}
+.banner li img{
+	width:100%;
+	height: 650px;
+	opacity:0;
+}
+.list{
+	width: 100%;
+	height: 65px;
+	position: absolute;
+	top:0;
+	left: 0;
+	background:rgba(0,0,0,0.6);
+}
+.head{
+	width: 1160px;
+	height: 65px;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	/* background:rgba(0,0,0,0.6); */
+	position: absolute;
+	right: 0;
+	left:0;
+	margin-left: auto;
+	margin-right: auto;
+	z-index: 99;
+}
+.head-left img{
+	width: 174px;
+	height: 46px;
+}
+.head-right{
+	width: 800px;
+	height: 65px;
+}
+.head-right li{
+	width: 133.31px;
+	padding:0 3px;
+	height: 65px;
+	float: left;
+}
+.head-right li a{
+	font-size:14px;
+	text-align:center;
+	line-height:65px;
+	color: #fff;
+	display: block;
+}
+.head-right li:hover{
+	background:rgba(255,128,0,0.4);
+}
+.dian{
+	position: absolute;
+	bottom: 5px;
+	left: 50%;
+	cursor: pointer;
+}
+.dian li{
+	width: 15px;
+	height: 15px;
+	border-radius: 10px;
+	background: #fff;
+	float:left;
+	margin-left:10px;
+}
+.dian li:first-child{
+	background:red;
+}
+.left{
+	width: 50px;
+	height: 60px;
+	position: absolute;
+	left:10px;
+	top: 50%;
+	font-weight: bold;
+	font-size:42px;
+	line-height: 60px;
+	text-align: center;
+	color: #fff;
+	cursor: pointer;
+}
+.right {
+	width: 50px;
+	height: 60px;
+	position: absolute;
+	right:10px;
+	top: 50%;
+	font-weight: bold;
+	font-size:42px;
+	line-height: 60px;
+	text-align: center;
+	color: #fff;
+	cursor: pointer;	
+}
+/* head */
+
+
+/* 2 */
+section{
+	width: 1100px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 20px 0 40px;
+}
+.anli-left{
+	width: 124.5px;
+	height:300px;
+    margin-top: 12px;
+    display: inline-block;
+    float: left;
+}
+.anli-left ul{
+	margin: 0;
+    padding: 0;
+    display: inline-block;
+    width: 100%;
+}
+.anli-left ul li{
+	width: 124.5px;
+	height:44px;
+    list-style: none;
+    line-height: 41px;
+    background: #000;
+    border-bottom: 1px solid #fff;
+    text-align: center;
+}
+.anli-left ul li a{
+	 display: block;
+	 color: #fff;
+}
+.anli-left ul li input{
+	width: 81px;
+    height: 22px;
+    border: 1px solid #878787;
+    margin-top: -5px;
+}
+.anli-left ul li button{
+	outline: none;
+	font-size: 10px;
+	margin-top: -5px;
+	border:none;
+}
+.anli-left ul li:nth-child(4){
+	background: red;
+}
+.anli-right{
+	width: 949px;
+    display: inline-block;
+    float: right;
+}
+.anli-top p{
+	border-top: 2px solid #ccc;
+    margin-top: 33px;
+}
+.anli-top span{
+	padding: 0 0 0 24px;
+    border-bottom: 2px solid #f1404b;
+    width: 106px;
+    display: block;
+    color: #f1404b;
+    margin: -23px 0 18px;
+}
+.anli-center{
+	width: 949px;
+	height: 466px;
+}
+.anli-center li{
+	width: 213px;
+	height: 230px;
+	float: left;
+	margin-right: 15px;
+}
+.anli-center li a{
+	display: block;
+}
+.yi{
+	width:213px;
+	height: 169px;
+    border: 1px solid #dedede;
+}
+.yi img{
+	display: block;
+	width: 210px;
+	height: 160px;
+}
+ .anli-center li a p{
+	font-size: 16px;
+	text-align: center;
+	line-height: 20px;
+	color: #000;
+	margin-top: 15px;
+}
+.yi:hover{
+	 border: 1px solid red;
+}
+.anli-bottom{
+	width: 949px;
+	height: 45px;
+	margin-top: 50px;
+}
+.anli-bottom ul{
+	width: 200px;
+	height: 45px;
+	margin: 0 auto;
+}
+.anli-bottom ul li{
+	float:left;
+    margin-right: 6px ;
+}
+.anli-bottom ul li a{
+	 text-align: center;
+     line-height: 45px;
+     display: block;
+     color: #000;
+}
+/* 2 */
+
+
+
+/* di */
+footer{
+	width: 100%;
+	height: 249px;
+	background: #e1e1e1;
+}
+.foot{
+	width: 1100px;
+	height: 249px;
+	margin:0 auto;
+	padding: 50px 0;
+	display: flex;
+}
+.foot-left{
+	width:148px;
+	height: 149px;
+}
+.foot-left>img{
+	width:148px;
+	height: 149px;
+}
+.foot-right{
+	width: 850px;
+	height: 141px;
+	margin-left: 40px;
+}
+.foot-right>p{
+	margin-bottom: 80px;
+}
+.foot-box{
+	margin-right:20px;
+	float: left;
+}
+.foot-box>img{
+	width: 38px;
+	height:41px;
+	float: left;
+}
+.foot-box>div{
+  margin-left: 50px;
+}
+
+/* di */
