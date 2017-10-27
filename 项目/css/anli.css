@@ -92,20 +92,20 @@ header{
 .dian li:first-child{
 	background:red;
 }
-.left{
+.icon-back{
 	width: 50px;
 	height: 60px;
 	position: absolute;
 	left:10px;
 	top: 50%;
 	font-weight: bold;
-	font-size:42px;
+	
 	line-height: 60px;
 	text-align: center;
-	color: #fff;
+	/* color: #fff; */
 	cursor: pointer;
 }
-.right {
+.icon-more {
 	width: 50px;
 	height: 60px;
 	position: absolute;
@@ -115,7 +115,7 @@ header{
 	font-size:42px;
 	line-height: 60px;
 	text-align: center;
-	color: #fff;
+/* 	color: #fff; */
 	cursor: pointer;	
 }
 /* head */
