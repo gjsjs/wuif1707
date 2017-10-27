@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>poke</title>
+	<script src="jquery-3.2.1.js"></script>
+</head>
+<style>
+	*{
+		margin: 0;
+		padding:0;
+		list-style:none;
+	}
+	html,body{
+		width:100%;
+		height:100%;
+		background-image:-webkit-linear-gradient(top,#00e7ff,#ff0078)
+	}
+	.zhuozi{
+		width:700px;
+		height:600px;
+		margin:0 auto;
+		/* background:red; */
+        position:relative;
+	}
+	.poke{
+		width:80px;
+		height:110px;
+		position:absolute;
+		left:300px;
+		top: 0;
+		background: #fff;
+	}
+	.active{
+		box-shadow:0 0 1px 1px #f60;
+	}
+	.bntl{
+		width:80px;
+		height:30px;
+		position:absolute;
+		left: 310px;
+		top:480px;
+		background:#f70;
+		color:#fff;
+		text-align: center;
+		line-height:30px;
+		font-size:20px;
+	}
+	.bntr{
+		width:80px;
+		height:30px;
+		position:absolute;
+		left: 310px;
+		top:520px;
+		background:#f70;
+		color:#fff;
+		text-align: center;
+		line-height:30px;
+		font-size:20px;
+	}
+</style>
+<body>
+	<div class="zhuozi">
+		<button class="bntl">&gt;</button>
+		<button class="bntr">&lt;</button>
+	</div>
+	<script>
+		$(function(){
+			let color=['c','d','s','h'];
+			let poke=[];
+			let flag={};
+
+			while(poke.length<52){
+				let hua=color[Math.floor(Math.random()*color.length)];
+				let num=Math.floor(Math.random()*13+1);
+				if(!flag[`${num}_${hua}`]){
+					poke.push({num,hua})
+					flag[`${num}_${hua}`]=true;
+				}
+			}
+			let index=0;
+			for(let i=0;i<7;i++){
+				for(let j=0;j<=i;j++){
+					let left=300-50*i+100*j,
+					    top=50*i;
+					 $('<div>').addClass('poke ') 
+					    .attr('id',`${i}_${j}`).data('num',poke[index].num)
+					   .css({background:`url(images/${poke[index]['num']}${poke[index]['hua']}.jpg)`,backgroundSize:'contain'})
+					   // .html(`${poke[index]['hua']}_${poke[index]['num']}`)
+					   .appendTo('.zhuozi').delay(index*10).animate({left,top})
+					   index++;
+					  
+				}
+			}
+			for(;index<poke.length;index++){
+               $('<div>').addClass('poke zuo')
+					    .attr('id',`${-2}_${-2}`).data('num',poke[index].num)
+					   .css({background:`url(images/${poke[index]['num']}${poke[index]['hua']}.jpg`,backgroundSize:'contain'})
+					   // .html(`${poke[index]['hua']}_${poke[index]['num']}`)
+					   .appendTo('.zhuozi').delay(index*10).animate({left:0,top:460})		   
+			}
+			let first=null;
+			$('.zhuozi').on('click','.poke',function(e){
+				 let element=$(e.target);
+				let ids=element.attr('id').split('_');
+				let ele1=`#${ids[0]*1+1}_${ids[1]*1}`
+				let ele2=`#${ids[0]*1+1}_${ids[1]*1+1}`;
+                if($(ele1).length||$(ele2).length){
+                         return;
+                }
+				element.toggleClass('active');
+				if(element.hasClass('active')){
+					element.animate({'top':'-=20'})
+				}else{
+					element.animate({'top':'+=20'})
+				}
+				if(!first){
+					first=element;
+				}
+				
+				else{
+                    if(first.data('num')+element.data('num')==14){
+                    	$('.active').animate({top:0,left:600,opacity:0}),queue(function(){
+                    		$(this).remove();
+                    	})
+                    }else{
+                    	$('.active').animate({top:'+=20'},function(){
+                    		$(this).removeClass('active')
+                    	})
+                    }
+                   first=null
+				} 
+
+			})
+			// console.log(poke)
+		let zindex=0;
+		$('.bntl').on('click',function(){
+			if(!$('.zuo').length){return}
+			$('.zuo').last().css('zIndex',zindex++).animate({left:600}).removeClass('zuo').addClass('you')
+		})
+		$('.bntr').on('click',function(){
+			if(!$('.you').length){return}
+			$('.you').each(function(index) {
+				$(this).css('zIndex',zindex++).delay(index*100).animate({left:0}).removeClass('you').addClass('zou')
+			});
+		})
+		})
+	</script>
+</body>
+</html>

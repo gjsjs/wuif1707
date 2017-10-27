@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>画板</title>
+	<link rel="stylesheet" href="iconfont/iconfont.css">
+	<script src="画板.js"></script>
+</head>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		box-sizing: border-box;
+	}
+	html,body{
+		width:100%;
+		height: 100%;
+		overflow:hidden;
+	}
+	main{
+		width:100%;
+		height: 100%;
+		border:10px solid #ccc;
+	}
+	.top{
+		width:100%;
+		height:120px;
+		background:#35D6F1;
+		border-bottom:1px solid #fff;
+	}
+	.top>li{
+		width: 25%;
+		height:100%;
+		float:left;
+		border:2px solid #fff;
+		text-align:center;
+		line-height:20px;
+	}
+	.top>li:first-child{
+		width: 50%;
+		height:100%;
+	}
+	.top>li>ul{
+		width: 100%;
+		height: 90px;
+		/* display: flex; */
+		/* justify-content:space-between; */
+		/* align-items:center; */
+	}
+	.top>li>ul>li{
+		width:50px;
+		height:50px;
+		border:1px solid #fff;
+		margin:20px 6px 20px 6px;
+		text-align:center;
+		line-height:50px;
+		font-size:8px;
+		float: left;
+	}
+	.top>li>.toolsx>li{
+		width:40px;
+		height:40px;
+		line-height:40px;
+		margin-top: 25px;
+		/* margin-left:10px; */
+
+	}
+	.toolsx a{
+		display:inline-block;
+		text-decoration:none;
+		color: #000;
+	}
+	input{
+		display:block;
+		width: 30px;
+		height: 30px;
+		margin:0 auto;
+		margin-top:5px;
+	}
+    .bottom{
+    	width: 100%;
+    	height:calc(100% - 120px);
+    	position:relative;
+    }
+    canvas{
+    	border:1px solid #f70;
+    }
+    .eraser{
+		width:50px;
+		height:50px;
+		position:absolute;
+		left:0;
+		top: 0;
+		border-radius:50%;
+		background:rgba(239,21,79,0.3);
+		display: none;
+	}
+	.opacity{
+		width: 100%;
+		height:100%;
+		position:absolute;
+		left: 0;
+		top: 0;
+		z-index: 99;		
+	}
+	.clip{
+		position: absolute;
+		left: 0;
+		top: 0;
+		border: 1px dashed red;
+		width: 100px;
+		height: 100px;
+		display: none; 
+	}
+</style>
+<body>
+	<main>
+		<ul class="top">
+			<li class="tools">工具<hr/>
+                <ul class="toolsx">
+                	<li class="toolsx1"><i class="iconfont icon-chexiao"></i></li>
+                	<li class="toolsx2"><i class="iconfont icon-caiqie"></i></li>
+                	<li class="toolsx3"><i class="iconfont icon-xiangpica"></i></li>
+                	<li class="toolsx41"><i class="iconfont icon-tianchong"></i></li>
+                	<li class="toolsx4"><input type="color"></li>
+                	<li class="toolsx5"><i class="iconfont icon-wenben"></i></li>
+                	<li class="toolsx6"><a href="" class="save"><i class="iconfont icon-baocun"></i></a></li>
+                	<li class="toolsx7"><i class="iconfont icon-xinjian"></i></li>
+                	<li class="toolsx8"><i class="iconfont icon-qingkong"></i></li>
+                	<li class="toolsx9"><i class="iconfont icon-fanxiang"></i></li>
+                    <li class="toolsx10"><i class="iconfont icon-miaobian"></i></li>
+                	<li class="toolsx11"><input type="color"></li>
+                </ul>
+			</li>
+			<li class="shape">形状<hr/>
+                 <ul class="shapex">
+                	<li class="shapex1"><i class="iconfont icon-duobianxing"></i></li>
+                	<li class="shapex2"><i class="iconfont icon-02"></i></li>
+                	<li class="shapex3"><i class="iconfont icon-duojiaoxing"></i></li>
+                	<li class="shapex4"><i class="iconfont icon-xingzhuang60kaobei2
+.ic"></i></li>
+                	<!-- <li class="shapex5"></li> -->
+
+                	
+                </ul>
+			</li>
+			<li class="line">线宽<hr/>
+                  <ul class="linex">
+                	<li class="linex1"><i class="iconfont icon-xian"></i></li>
+                	<li class="linex2"><i class="iconfont icon-xian1"></i></li>
+                	<li class="linex3"><i class="iconfont icon-xuxian"></i></li>
+                	<li class="linex4"><i class="iconfont icon-pan_icon"></i></li>
+                    
+                	
+                </ul>
+             </li>
+			
+		</ul>
+		<div class="bottom">
+		<div class="eraser"></div>
+		<div class="opacity"></div>
+		<div class="clip"></div>
+		<canvas width="1080" height="500"></canvas>
+		</div>
+	</main>
+	<script>
+		window.onload=function(){
+			let toolsx1=document.querySelector('.toolsx1');
+			let toolsx2=document.querySelector('.toolsx2');
+			let toolsx3=document.querySelector('.toolsx3');
+			let toolsx4=document.querySelector('.toolsx4 input');
+			let toolsx41=document.querySelector('.toolsx41');
+			console.log(toolsx4)
+            // let colorf=document.querySelector('.colorf')
+			let toolsx5=document.querySelector('.toolsx5');
+			let toolsx6=document.querySelector('.toolsx6');
+			let save=document.querySelector('.save')
+			let toolsx7=document.querySelector('.toolsx7');
+			let toolsx8=document.querySelector('.toolsx8');
+			let toolsx9=document.querySelector('.toolsx9');
+			let toolsx10=document.querySelector('.toolsx10');
+			let toolsx11=document.querySelector('.toolsx11 input');
+            // let colors=document.querySelector('.colors')
+            
+
+            
+            
+			let shapex1=document.querySelector('.shapex1');
+			let shapex2=document.querySelector('.shapex2');
+			let shapex3=document.querySelector('.shapex3');
+			let shapex4=document.querySelector('.shapex4');
+			let shapex5=document.querySelector('.shapex5');
+            
+
+			let linex1=document.querySelector('.linex1');
+			let linex2=document.querySelector('.linex2');
+			let linex3=document.querySelector('.linex3');
+			let linex4=document.querySelector('.linex4');
+
+
+			let opacity=document.querySelector('.opacity')
+			let eraser=document.querySelector('.eraser')
+			let clip=document.querySelector('.clip')
+
+			let canvas=document.querySelector('canvas');
+			let ctx=canvas.getContext("2d");
+			let pad=new palette(canvas,ctx,opacity,eraser);
+            linex1.onclick=function(){
+            	pad.line();
+            }
+            linex2.onclick=function(){
+            	pad.line1();
+            }
+             linex3.onclick=function(){
+            	pad.line2();
+            }
+             linex4.onclick=function(){
+            	pad.line3();
+            }
+            shapex1.onclick=function(){
+             let num=prompt('请输入边数',4);
+            	pad.poly(num);
+            }
+            shapex2.onclick=function(){
+            	pad.circle();
+            }
+            shapex3.onclick=function(){
+             let num=prompt('请输入边数',4);
+            	pad.poly1(num);
+            }
+             shapex4.onclick=function(){
+             // let num=prompt('请输入边数',4);
+            	pad.poly2(5);
+            }
+             toolsx1.onclick=function(){
+            	pad.chexiao();
+            }
+            toolsx2.onclick=function(){
+            	pad.caiqie(clip)
+            }
+            toolsx3.onclick=function(){
+                // let width=prompt('橡皮的尺寸',50)
+            	pad.ca(eraser,50,50)
+            }
+            // toolsx41.onclick=function(){
+            	
+            // }
+            toolsx41.onclick=function(){
+               pad.fillStyle=toolsx4.value;
+               pad.style='fill';
+            }
+             toolsx10.onclick=function(){
+               pad.strokeStyle=toolsx11.value;
+               pad.style='stroke'; 
+            }
+            toolsx5.onclick=function(){
+            	pad.text();
+            }
+            save.onclick=function(){
+            	let data=canvas.toDataURL('image/png');
+            	save.href=data;
+            	save.download='tu.png'
+            }
+             toolsx7.onclick=function(){
+            	let flag=confirm('是否保存')
+            	/*if(flag){
+            		save.onclick();
+            	}
+            	toolsx8.onclick()*/
+            	location.href=canvas.toDataURL('image/png').replace('image/png','image/octet-stream')
+            }
+            toolsx8.onclick=function(){
+            	pad.clean();
+            }
+            toolsx9.onclick=function(){
+            	pad.reverser();
+            }
+		}
+	</script>
+</body>
+</html>

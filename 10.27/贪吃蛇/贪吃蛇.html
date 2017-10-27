@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>贪吃蛇</title>
+	<script src="jquery-3.2.1.js"></script>
+</head>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	html,body{
+		width:100%;
+		height:100%;
+	}
+
+	.scence{
+		width: 600px;
+		height:600px;
+		position: absolute;
+		top:50%;
+		left: 50%;
+		background:url('1.jpg') no-repeat center/cover;
+		margin-left:-300px;
+		margin-top: -300px;
+		/* border-left: 1px solid #000;
+		border-top: 1px solid #000; */
+	}
+	.block{
+		width: 29px;
+		height: 29px;
+		/* background: #fff; */
+			background:url('bj.jpg') no-repeat center/cover;
+		float:left;
+		margin-right: 1px;
+		margin-bottom: 1px;
+		z-index:99;
+		border-radius:10px;
+	}
+	.hot{
+		background: green!important;
+		}
+	.box{
+		width: 200px;
+		height: 600px;
+		border:1px solid  #01aa34;
+		margin-top:27px;
+		margin-left: 130px;
+
+	}
+	button{
+		display: block;
+		width: 80px;
+		height: 50px;
+		background:#999;
+		outline:none;
+		border: none;
+		border-radius: 10px;
+		text-align: center;
+		font-size:13px;
+		line-height:30px;
+		color:#fff;
+		margin:150px auto;
+		/* position:absolute;
+		top:50%;
+		left:50%; */
+	}	
+</style>
+
+<body>
+<div class="box">
+	<button class="bunt1">开始</button>
+	<button class="bunt2">暂 停</button>
+</div>
+
+<div class="scence"></div>
+
+<script src="贪吃蛇.js"></script>
+	<script>
+	$(function(){
+		// $('.scence').css('background','url('')')
+		let snake=new Snake;
+		$('.bunt1').on('click',function(){
+			snake.start();
+			$('.scence').css('background','none')
+		})
+		$('.bunt2').on('click',function(){
+			snake.stop();
+		})
+		
+
+
+	})	
+	</script>
+</body>
+</html>
