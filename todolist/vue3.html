@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style: none;
+        }
+        .box{
+            width:600px;
+            height:auto;
+            margin:auto;
+        }
+        input  {
+            width:600px;
+            height:50px;
+            margin-left:5px;
+        }
+        .btn input{
+            float: right;
+            width:20%;
+            border:none;
+        }
+        .list{
+            margin-top: 100px;
+        }
+        .list li{
+            width:100%;
+            height: 40px;
+            line-height: 25px;
+            border-bottom: 1px solid #000;
+            margin-bottom: 10px;
+        }
+        .list li .opt{
+            /*display: block;*/
+            float: left;
+            width:10px;
+            height: 10px;
+            border-radius: 50%;
+            border:1px solid #000;
+            margin-top: 8px;
+            cursor: pointer;
+        }
+        .list li p{
+            float: left;
+            padding-left:10px;
+            /*border:1px solid #000000;*/
+        }
+        .list li .del{
+            float: right;
+            margin-top: 4px;
+            line-height: 17px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .red{
+            background: red;
+        }
+
+    </style>
+</head>
+<body>
+<div id="root">
+    <div class="box">
+        <input type="text" placeholder="hellow" v-model="con" @keyup.13="add" ref="abc">
+        <div class="btn">
+            <input type="button" value="全部" @click="changeStatus('all')" :class="{check:status=='all'}">
+            <input type="button" value="已完成" @click="changeStatus('1')" :class="{check:status=='1'}">
+            <input type="button" value="未完成" @click="changeStatus('0')" :class="{check:status=='0'}">
+        </div>
+        <ul class="list">
+            <li v-for="item in datas">
+                <div v-if="item.edit" @dblclick="edit(item)">
+                    <span class="opt" @click="changeState(item)" :class="{red:item.state==1}"></span>
+                    <p>{{item.title}}</p>
+                    <span class="del" @click="del(item.id)">删除</span>
+                </div>
+                <div v-else>
+                    <input type="text" v-model="item.title" @blur="blur(item)">
+                </div>
+            </li>
+        </ul>
+        <div v-show="all.length==0">没有数据</div>
+    </div>
+</div>
+<script>
+    Vue
+    new Vue({
+        el:"#root",
+        data:{
+            all:localStorage.name?JSON.parse(localStorage.name):[],
+            con:"",
+            status:"all"
+        },
+        methods:{
+            add(){
+                if(!this.con){
+                    alert("请输入内容");
+                    return;
+                }
+                var obj={};
+                obj.title=this.con;
+                obj.id=Math.random()+new Date().getTime();
+                obj.state=0;
+                obj.edit=true;
+               this.all.push(obj);
+               console.log(this.all);
+
+               this.con=""; //清空
+                localStorage.name=JSON.stringify(this.all);
+            },
+            changeStatus(val){
+                this.status=val;
+            },
+            changeState(obj){
+                if(obj.state==0){
+                    obj.state=1;
+                }else{
+                    obj.state=0;
+                }
+            },
+            del(id){
+                this.all=this.all.filter(function(a){
+                    if(a.id!=id){
+                        return a;
+                    }
+                })
+            },
+            edit(obj){
+                obj.edit=false;
+            },
+            blur(obj){
+                obj.edit=true;
+            },
+        },
+        computed:{
+            datas(){
+                return this.all.filter((a)=>{
+                    if(this.status=="all"){
+                        return a;
+                    }else{
+                        if(a.state==this.status){
+                            return a;
+                        }
+                    }
+                })
+            }
+        },
+        mounted(){                                  //这是一个生命周期函数
+            this.todos =JSON.parse(localStorage.all);
+            this.lastid=this.all[this.all.length-1].id
+        },
+    })
+</script>
+</body>
+</html>
