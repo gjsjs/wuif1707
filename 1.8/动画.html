@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!--一个属性或者样式，连续不断的发生变化，在你的视觉上才能呈现动画的形态-->
+<!--眼睛  连续不间断-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;24帧-->
+</body>
+</html>
+<script>
+    var num=0;
+    var t;
+    function change() {
+        num++;
+        console.log(num)
+        if(num>100){
+            cancelAnimationFrame(t)
+        }
+        t=requestAnimationFrame(change);
+    }
+    change()
+</script>
