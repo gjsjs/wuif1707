@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    main{
+        width: 600px;
+        height: auto;
+        margin:0 auto;
+        padding: 30px 20px;
+    }
+    main h1{
+        text-align: center;
+    }
+    main ul{
+        width: 100%;
+        height: auto;
+        margin:20px 0;
+    }
+    main ul>li{
+        width: 100%;
+        height: 50px;
+        display: flex;
+        margin:10px 0;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    main ul>li>p{
+        padding-left: 50px;
+        font-size: 18px;
+    }
+</style>
+<body>
+<main>
+    <h1>将数组[2,5,6,3,4,1]从小到大排列</h1>
+    <ul>
+        <li>
+            <h3>选择排序法：</h3>
+            <p id="sort1"></p>
+        </li>
+        <li>
+            <h3>冒泡排序法：</h3>
+            <p id="sort2"></p>
+        </li>
+        <li>
+            <h3>插入排序法：</h3>
+            <p id="sort3"></p>
+        </li>
+        <li>
+            <h3>快速排序法：</h3>
+            <p id="sort4"></p>
+        </li>
+        <li>
+            <h3>JS自带排序法：</h3>
+            <p id="sort5"></p>
+        </li>
+    </ul>
+</main>
+</body>
+</html>
+<script>
+//选择排序法
+    function sort(arr){
+        /*给每个插入后的未确定的范围循环，初始是从0开始*/
+        for(var i=0; i<arr.length; i++){
+            /*设置当前范围的最小值和其索引*/
+            var min = arr[i];
+            var minIndex = i;
+            /*在该范围内选出最小值*/
+            for(var j=i+1; j<arr.length; j++){
+                if(min>arr[j]){
+                    min = arr[j];
+                    minIndex = j;
+                }
+            }
+            /*将最小值插入到i，并且把它所在的原有项替换成*/
+            arr.splice(i,0,min);
+            arr.splice(minIndex+1,1);
+        }
+        return arr
+    }
+    var arr1=[2,5,6,3,4,1];
+    var sort1=document.getElementById('sort1');
+    sort1.innerHTML=sort(arr1)
+//冒泡排序法
+    function Sort2(arr){
+        /*给每个未确定的位置做循环*/
+        for(var i=arr.length-1; i>0; i--){
+            /*给进度做个记录，比到未确定位置*/
+            for(var j=0; j<i;j++){
+                if(arr[j]>arr[j+1]){
+                    var temp = arr[j];
+                    arr.splice(j,1,arr[j+1]);
+                    arr.splice(j+1,1,temp);
+                }
+            }
+        }
+       return arr
+    }
+    var arr2=[2,5,6,3,4,1];
+    var sort2=document.getElementById('sort2');
+    sort2.innerHTML=Sort2(arr2)
+//插入排序法
+    function Sort3(arr){
+        /*start根据已排列好的项数决定*/
+        var start=1;
+        /*按顺序，每一项检查已排列好的序列*/
+        for(var i=start; i<arr.length; start++,i++){
+            /*跟已排好序的序列做对比，并插入到合适的位置*/
+            for(var j=0; j<start; j++){
+                /*小于或者等于时（我们是升序）插入到该项前面*/
+                if(arr[i]<=arr[j]){
+//                console.log(arr[i]+' '+arr[j]);
+                    arr.splice(j,0,arr[i]);
+                    /*删除原有项*/
+                    arr.splice(i+1,1);
+                    break;
+                }
+            }
+
+        }
+        return arr
+    }
+    var arr3=[2,5,6,3,4,1];
+    var sort3=document.getElementById('sort3');
+    sort3.innerHTML=Sort3(arr3)
+//快速排序法
+function Sort4(arr){
+    var min=0, max=arr.length-1;
+    sort(min,max);
+    function sort(min, max){
+        if(min<max){
+            var mid = (function(min, max){
+                var tmp = arr[min];
+                while(min<max){
+                    while(min<max&&arr[max]>=tmp){
+                        max--;
+                    }
+                    arr[min] = arr[max];
+                    while(min<max&&arr[min]<=tmp){
+                        min++;
+                    }
+                    arr[max] = arr[min];
+                }
+                arr[min] = tmp;
+                return min;
+            })(min, max);
+            sort(min, mid-1);
+            sort(mid+1,max);
+        }
+    }
+    return arr;
+}
+var arr4=[2,5,6,3,4,1];
+var sort4=document.getElementById('sort4');
+sort4.innerHTML=Sort4(arr4)
+//JS自带排序法
+var arr5=[2,5,6,3,4,1];
+var sort5=document.getElementById('sort5');
+arr5.sort(function(a,b){
+    return a-b;
+})
+console.log(arr5)
+sort5.innerHTML=arr5
+</script>
